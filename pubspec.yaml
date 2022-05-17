@@ -1,0 +1,52 @@
+name: mc_feedback
+description: A MiniCampus Feedback module
+version: 0.0.1
+homepage: https://github.com/DonnC-Lab/mini_campus
+publish_to: none
+
+environment:
+  sdk: ">=2.16.2 <3.0.0"
+  flutter: ">=1.17.0"
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_vector_icons: ^1.0.0
+
+  # components
+  flutter_form_builder: ^7.1.1
+  form_builder_validators: ^7.7.0
+  keyboard_actions: ^3.4.7
+
+  # state management
+  flutter_riverpod: ^2.0.0-dev.4
+
+  # notification
+  flash: ^2.0.3+2
+
+  # utilities
+  relative_scale: ^2.0.0
+  flutter_rating_bar: ^4.0.0
+
+
+  # custom mc libs
+  mini_campus_core:
+    path: ../../mini_campus_core
+
+  mini_campus_core_libs:
+    path: ../../mini_campus_core_libs
+
+  mc_core_constants:
+    path: ../../mc_core_constants
+
+  mini_campus_core_components:
+    path: ../../mini_campus_core_components
+
+dev_dependencies:
+  build_runner: null
+  flutter_lints: ^1.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
