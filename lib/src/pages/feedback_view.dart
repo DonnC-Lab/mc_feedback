@@ -4,9 +4,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:mc_core_constants/mc_core_constants.dart';
 import 'package:mini_campus_core/mini_campus_core.dart';
-import 'package:mini_campus_core_components/mini_campus_core_components.dart';
 import 'package:relative_scale/relative_scale.dart';
 
 import '../models/feedback_model.dart';
@@ -18,7 +16,7 @@ class FeedbackView extends ConsumerStatefulWidget {
     required this.drawerModulePages,
   }) : super(key: key);
 
-  final List<DrawerPage> drawerModulePages;
+  final List<String> drawerModulePages;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _FeedbackViewState();
@@ -59,10 +57,8 @@ class _FeedbackViewState extends ConsumerState<FeedbackView> {
                   const SizedBox(height: 8),
                   Text(
                     'Help us help you get the best experience 😉',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline1
-                        ?.copyWith(fontSize: 13, color: greyTextShade),
+                    style: Theme.of(context).textTheme.headline1?.copyWith(
+                        fontSize: 13, color: McAppColors.appGreyShadeColor),
                   ),
                   const SizedBox(height: 20),
                   CustomDDField(
@@ -75,11 +71,11 @@ class _FeedbackViewState extends ConsumerState<FeedbackView> {
                     items: widget.drawerModulePages
                         .map(
                           (e) => DropdownMenuItem(
-                            child: Text(e.drawerItem.name),
+                            child: Text(e),
                             value: e,
                             onTap: () {
                               setState(() {
-                                _moduleName = e.drawerItem.name;
+                                _moduleName = e;
                               });
                             },
                           ),

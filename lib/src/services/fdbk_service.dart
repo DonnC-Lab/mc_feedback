@@ -1,15 +1,20 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mc_core_constants/mc_core_constants.dart';
 import 'package:mini_campus_core/mini_campus_core.dart';
-import 'package:mini_campus_core_libs/mini_campus_core_libs.dart';
 
 import '../models/feedback_model.dart';
 
-final fdbkProvider = Provider((_) => FeedbackService());
+final fdbkProvider = Provider((_) => FeedbackService(_.read));
 
 class FeedbackService {
-  static final DetaRepository _detaRepository =
-      DetaRepository(baseName: DetaBases.feedback, detaBaseUrl: detaBaseUrl);
+  late final DetaRepository _detaRepository;
+
+  final Reader _read;
+
+  FeedbackService(this._read)
+      : _detaRepository = DetaRepository(
+          baseName: DetaBases.feedback,
+          detaBaseUrl: _read(flavorConfigProvider)['detaBaseUrl'],
+        );
 
   Future addFeedback(FeedbackModel data) async {
     try {
