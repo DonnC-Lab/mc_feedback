@@ -626,11 +626,9 @@ packages:
   mini_campus_core:
     dependency: "direct main"
     description:
-      path: "."
-      ref: main
-      resolved-ref: c88ec83cdededea5051d293ed5e67c77b3fb443c
-      url: "https://github.com/DonnC-Lab/mini_campus_core.git"
-    source: git
+      path: "../../mini_campus_core"
+      relative: true
+    source: path
     version: "1.0.0"
   modal_bottom_sheet:
     dependency: transitive
